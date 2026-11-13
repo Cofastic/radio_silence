@@ -1,0 +1,11 @@
+services:
+  signals:
+    image: ubuntu/bind9:latest
+    restart: unless-stopped
+    ports:
+      - "5052:53/udp"
+      - "5052:53/tcp"
+    volumes:
+      - ./named.conf:/etc/bind/named.conf:ro
+      - ./zones:/zones
+      - ./cache:/var/cache/bind
